@@ -106,5 +106,5 @@ blob_url = populated_data_file['data']['attributes']['content_blobs'][0]['link']
 """Reset the local file and upload it to the URL"""
 
 local_file.seek(0)
-upload = session.post(blob_url, data=local_file.read())
+upload = session.put(blob_url, data=local_file.read(), headers={'Content-Type': 'application/octet-stream'})
 upload.raise_for_status()
